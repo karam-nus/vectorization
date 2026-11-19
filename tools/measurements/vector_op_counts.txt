@@ -1,0 +1,21 @@
+target   function instrs   xmm   ymm   zmm  scalar ss
+scalar   saxpy        14     4     0     0          2
+scalar   leaky        17     6     0     0          1
+scalar   dot          19     7     0     0          2
+scalar   prefix       14     3     0     0          1
+scalar   step_aos     23    12     0     0          6
+avx2     saxpy        66    14     4     0          3
+avx2     leaky        17     6     0     0          1
+avx2     dot          83    33     3     0         15
+avx2     prefix       14     3     0     0          1
+avx2     step_aos    267   102   112     0          4
+avx512   saxpy        94    23     4     4          7
+avx512   leaky       122    37     6     7          7
+avx512   dot         127    53    15     3         31
+avx512   prefix       14     3     0     0          1
+avx512   step_aos    346   113    73    91          8
+avx512fm saxpy        94    23     4     4          7
+avx512fm leaky       120    37     5     6          7
+avx512fm dot          97    30     7     4          7
+avx512fm prefix       14     3     0     0          1
+avx512fm step_aos    346   113    73    91          8

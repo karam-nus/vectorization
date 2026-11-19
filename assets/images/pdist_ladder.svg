@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="470" viewBox="0 0 860 470" role="img" aria-labelledby="t d">
+<title id="t">Pairwise distance implementations, from Python loops to AVX-512</title><desc id="d">Horizontal log-scale bars from 42 ns for Python loops down to 0.05 ns for reordered C loops with AVX-512; NumPy broadcasting is slower than a NumPy row loop; the GEMM reformulation is the fastest NumPy rung.</desc>
+<rect width="860" height="470" rx="10" fill="#111111"/>
+<text x="24.0" y="32.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="16" fill="#e8e8e8" text-anchor="start" font-weight="600" >One problem, eight rungs: pairwise squared distances, 1024 × 1024 points, d = 64</text>
+<text x="24.0" y="52.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#6b6b6b" text-anchor="start" font-weight="400" >ns per (pair × dimension), log scale, shorter is faster · Xeon (Emerald Rapids), 1 core, gcc 13.3, NumPy 2.5 (single core)</text>
+<line x1="300.0" y1="86.0" x2="300.0" y2="412.0" stroke="#262626" stroke-width="1"/>
+<text x="300.0" y="428.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#6b6b6b" text-anchor="middle" font-weight="400" >0.03</text>
+<line x1="365.3" y1="86.0" x2="365.3" y2="412.0" stroke="#262626" stroke-width="1"/>
+<text x="365.3" y="428.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#6b6b6b" text-anchor="middle" font-weight="400" >0.1</text>
+<line x1="424.9" y1="86.0" x2="424.9" y2="412.0" stroke="#262626" stroke-width="1"/>
+<text x="424.9" y="428.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#6b6b6b" text-anchor="middle" font-weight="400" >0.3</text>
+<line x1="490.2" y1="86.0" x2="490.2" y2="412.0" stroke="#262626" stroke-width="1"/>
+<text x="490.2" y="428.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#6b6b6b" text-anchor="middle" font-weight="400" >1</text>
+<line x1="549.8" y1="86.0" x2="549.8" y2="412.0" stroke="#262626" stroke-width="1"/>
+<text x="549.8" y="428.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#6b6b6b" text-anchor="middle" font-weight="400" >3</text>
+<line x1="615.1" y1="86.0" x2="615.1" y2="412.0" stroke="#262626" stroke-width="1"/>
+<text x="615.1" y="428.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#6b6b6b" text-anchor="middle" font-weight="400" >10</text>
+<line x1="674.7" y1="86.0" x2="674.7" y2="412.0" stroke="#262626" stroke-width="1"/>
+<text x="674.7" y="428.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#6b6b6b" text-anchor="middle" font-weight="400" >30</text>
+<line x1="740.0" y1="86.0" x2="740.0" y2="412.0" stroke="#262626" stroke-width="1"/>
+<text x="740.0" y="428.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#6b6b6b" text-anchor="middle" font-weight="400" >100</text>
+<text x="740.0" y="444.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#6b6b6b" text-anchor="end" font-weight="400" >ns per pair-dimension</text>
+<text x="288.0" y="109.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#e8e8e8" text-anchor="end" font-weight="400" >1. Python lists, 3 nested loops</text>
+<path d="M300.0,97.0 H689.1 Q693.1,97.0 693.1,101.0 V115.0 Q693.1,119.0 689.1,119.0 H300.0 Z" fill="#d95926"><title>Python lists, 3 nested loops: 42.1367 ns, 1× faster than rung 1</title></path>
+<text x="701.1" y="112.0" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#a3a3a3" text-anchor="start" font-weight="400" >42.1 ns · 1×</text>
+<text x="288.0" y="149.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#e8e8e8" text-anchor="end" font-weight="400" >2. NumPy broadcast (n, m, d) temp</text>
+<path d="M300.0,137.0 H514.0 Q518.0,137.0 518.0,141.0 V155.0 Q518.0,159.0 514.0,159.0 H300.0 Z" fill="#199e70"><title>NumPy broadcast (n, m, d) temp: 1.6700 ns, 25× faster than rung 1</title></path>
+<text x="526.0" y="152.0" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#a3a3a3" text-anchor="start" font-weight="400" >1.67 ns · 25×</text>
+<text x="288.0" y="189.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#e8e8e8" text-anchor="end" font-weight="400" >3. NumPy, loop over rows</text>
+<path d="M300.0,177.0 H495.2 Q499.2,177.0 499.2,181.0 V195.0 Q499.2,199.0 495.2,199.0 H300.0 Z" fill="#199e70"><title>NumPy, loop over rows: 1.1802 ns, 36× faster than rung 1</title></path>
+<text x="507.2" y="192.0" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#a3a3a3" text-anchor="start" font-weight="400" >1.18 ns · 36×</text>
+<text x="288.0" y="229.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#e8e8e8" text-anchor="end" font-weight="400" >4. C naive, -O2 scalar</text>
+<path d="M300.0,217.0 H447.3 Q451.3,217.0 451.3,221.0 V235.0 Q451.3,239.0 447.3,239.0 H300.0 Z" fill="#3987e5"><title>C naive, -O2 scalar: 0.4878 ns, 86× faster than rung 1</title></path>
+<text x="459.3" y="232.0" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#a3a3a3" text-anchor="start" font-weight="400" >0.488 ns · 86×</text>
+<text x="288.0" y="269.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#e8e8e8" text-anchor="end" font-weight="400" >5. C naive, -O3 AVX-512 (strict FP)</text>
+<path d="M300.0,257.0 H448.8 Q452.8,257.0 452.8,261.0 V275.0 Q452.8,279.0 448.8,279.0 H300.0 Z" fill="#3987e5"><title>C naive, -O3 AVX-512 (strict FP): 0.5018 ns, 84× faster than rung 1</title></path>
+<text x="460.8" y="272.0" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#a3a3a3" text-anchor="start" font-weight="400" >0.502 ns · 84×</text>
+<text x="288.0" y="309.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#e8e8e8" text-anchor="end" font-weight="400" >6. C naive, -O3 AVX-512 -ffast-math</text>
+<path d="M300.0,297.0 H339.9 Q343.9,297.0 343.9,301.0 V315.0 Q343.9,319.0 339.9,319.0 H300.0 Z" fill="#3987e5"><title>C naive, -O3 AVX-512 -ffast-math: 0.0674 ns, 625× faster than rung 1</title></path>
+<text x="351.9" y="312.0" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#a3a3a3" text-anchor="start" font-weight="400" >0.0674 ns · 625×</text>
+<text x="288.0" y="349.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#e8e8e8" text-anchor="end" font-weight="400" >7. NumPy ‖x‖²+‖y‖²−2XYᵀ (one GEMM)</text>
+<path d="M300.0,337.0 H353.3 Q357.3,337.0 357.3,341.0 V355.0 Q357.3,359.0 353.3,359.0 H300.0 Z" fill="#199e70"><title>NumPy ‖x‖²+‖y‖²−2XYᵀ (one GEMM): 0.0863 ns, 488× faster than rung 1</title></path>
+<text x="365.3" y="352.0" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#a3a3a3" text-anchor="start" font-weight="400" >0.0863 ns · 488×</text>
+<text x="288.0" y="389.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#e8e8e8" text-anchor="end" font-weight="400" >8. C loops reordered, AVX-512</text>
+<path d="M300.0,377.0 H324.3 Q328.3,377.0 328.3,381.0 V395.0 Q328.3,399.0 324.3,399.0 H300.0 Z" fill="#3987e5"><title>C loops reordered, AVX-512: 0.0505 ns, 834× faster than rung 1</title></path>
+<text x="336.3" y="392.0" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#a3a3a3" text-anchor="start" font-weight="400" >0.0505 ns · 834×</text>
+<rect x="300.0" y="69.0" width="10" height="10" rx="2" fill="#d95926"/>
+<text x="315.0" y="78.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#a3a3a3" text-anchor="start" font-weight="400" >Python</text>
+<rect x="370.8" y="69.0" width="10" height="10" rx="2" fill="#199e70"/>
+<text x="385.8" y="78.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#a3a3a3" text-anchor="start" font-weight="400" >NumPy</text>
+<rect x="435.3" y="69.0" width="10" height="10" rx="2" fill="#3987e5"/>
+<text x="450.3" y="78.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#a3a3a3" text-anchor="start" font-weight="400" >C</text>
+<text x="24.0" y="462.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#6b6b6b" text-anchor="start" font-weight="400" >Python rung measured at n = 96 (it would take minutes at 1024); all costs normalised per pair × dimension.</text>
+</svg>

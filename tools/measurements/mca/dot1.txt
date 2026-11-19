@@ -1,0 +1,15 @@
+### llvm-mca -mcpu=sapphirerapids -timeline : dot1.s
+Timeline view:
+                    0123456789          012345678
+Index     0123456789          0123456789         
+
+[0,0]     DeeeeeeeeeeeeER.    .    .    .    .  .   vfmadd231ps	(%rdi,%rax), %zmm1, %zmm0
+[0,1]     D======eeeeeeeeeeeeER    .    .    .  .   vfmadd231ps	64(%rdi,%rax), %zmm2, %zmm0
+[0,2]     D============eeeeeeeeeeeeER   .    .  .   vfmadd231ps	128(%rdi,%rax), %zmm3, %zmm0
+[0,3]     .D=================eeeeeeeeeeeeER  .  .   vfmadd231ps	192(%rdi,%rax), %zmm4, %zmm0
+[1,0]     .D=======================eeeeeeeeeeeeER   vfmadd231ps	(%rdi,%rax), %zmm1, %zmm0
+Truncated display due to cycle limit
+### -iterations=100 summary
+Total Cycles:      2409
+IPC:               0.17
+Block RThroughput: 4.0

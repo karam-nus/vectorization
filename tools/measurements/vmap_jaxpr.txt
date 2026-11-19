@@ -1,0 +1,42 @@
+# jax 0.12.1
+
+## predict(w, x) for one example
+{ lambda ; a:f32[8,16] b:f32[16]. let
+    c:f32[8] = dot_general[
+      dimension_numbers=(([1], [0]), ([], []))
+      preferred_element_type=float32
+    ] a b
+    d:f32[8] = tanh c
+    e:bool[8] = gt d 0.0:f32[]
+    f:f32[8] = mul 0.009999999776482582:f32[] d
+    g:f32[8] = jit[
+      name=_where
+      jaxpr={ lambda ; e:bool[8] d:f32[8] f:f32[8]. let
+          g:f32[8] = select_n e f d
+        in (g,) }
+    ] e d f
+    h:f32[] = reduce_sum[axes=(0,) out_sharding=None] g
+  in (h,) }
+
+## jax.vmap(predict, in_axes=(None, 0)) for a batch of 32
+{ lambda ; a:f32[8,16] b:f32[32,16]. let
+    c:f32[8,32] = dot_general[
+      dimension_numbers=(([1], [1]), ([], []))
+      preferred_element_type=float32
+    ] a b
+    d:f32[8,32] = tanh c
+    e:bool[8,32] = gt d 0.0:f32[]
+    f:f32[8,32] = mul 0.009999999776482582:f32[] d
+    g:f32[8,32] = jit[
+      name=_where
+      jaxpr={ lambda ; e:bool[8,32] d:f32[8,32] f:f32[8,32]. let
+          g:f32[8,32] = select_n e f d
+        in (g,) }
+    ] e d f
+    h:f32[32] = reduce_sum[axes=(np.int64(0),) out_sharding=None] g
+  in (h,) }
+
+## per-example gradients: jax.vmap(jax.grad(loss), in_axes=(None, 0, 0))
+output shape: (32, 8, 16) (one gradient of w per example)
+
+## timing, B = 4096, one CPU core: loop of jitted single calls 348.5 ms, one vmapped call 0.077 ms, ratio 4526x

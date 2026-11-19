@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="400" viewBox="0 0 860 400" role="img" aria-labelledby="t d">
+<title id="t">Dot product throughput by implementation</title><desc id="d">Bars: strict-IEEE AVX-512 code is slower than scalar; -ffast-math and one accumulator reach about 27 GFLOP/s; four accumulators reach about 70 GFLOP/s.</desc>
+<rect width="860" height="400" rx="10" fill="#111111"/>
+<text x="24.0" y="32.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="16" fill="#e8e8e8" text-anchor="start" font-weight="600" >A reduction is a latency chain until you give it independent accumulators</text>
+<text x="24.0" y="52.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#6b6b6b" text-anchor="start" font-weight="400" >dot product, fp32, n = 4096 (in L1), GFLOP/s · Xeon (Emerald Rapids), 1 core, gcc 13.3</text>
+<line x1="250.0" y1="78.0" x2="250.0" y2="350.0" stroke="#262626" stroke-width="1"/>
+<text x="250.0" y="366.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#6b6b6b" text-anchor="middle" font-weight="400" >0</text>
+<line x1="377.5" y1="78.0" x2="377.5" y2="350.0" stroke="#262626" stroke-width="1"/>
+<text x="377.5" y="366.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#6b6b6b" text-anchor="middle" font-weight="400" >20</text>
+<line x1="505.0" y1="78.0" x2="505.0" y2="350.0" stroke="#262626" stroke-width="1"/>
+<text x="505.0" y="366.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#6b6b6b" text-anchor="middle" font-weight="400" >40</text>
+<line x1="632.5" y1="78.0" x2="632.5" y2="350.0" stroke="#262626" stroke-width="1"/>
+<text x="632.5" y="366.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#6b6b6b" text-anchor="middle" font-weight="400" >60</text>
+<line x1="760.0" y1="78.0" x2="760.0" y2="350.0" stroke="#262626" stroke-width="1"/>
+<text x="760.0" y="366.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#6b6b6b" text-anchor="middle" font-weight="400" >80</text>
+<text x="760.0" y="382.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#6b6b6b" text-anchor="end" font-weight="400" >GFLOP/s</text>
+<text x="238.0" y="100.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#e8e8e8" text-anchor="end" font-weight="400" >scalar, in order</text>
+<path d="M250.0,88.0 H266.4 Q270.4,88.0 270.4,92.0 V106.0 Q270.4,110.0 266.4,110.0 H250.0 Z" fill="#3987e5"><title>scalar, in order: 3.2 GFLOP/s, 1.00× scalar</title></path>
+<text x="278.4" y="103.0" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#a3a3a3" text-anchor="start" font-weight="400" >3.2  (1.00×)</text>
+<text x="238.0" y="138.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#e8e8e8" text-anchor="end" font-weight="400" >gcc AVX-512, strict IEEE</text>
+<path d="M250.0,126.0 H257.3 Q261.3,126.0 261.3,130.0 V144.0 Q261.3,148.0 257.3,148.0 H250.0 Z" fill="#e66767"><title>gcc AVX-512, strict IEEE: 1.8 GFLOP/s, 0.55× scalar</title></path>
+<text x="269.3" y="141.0" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#a3a3a3" text-anchor="start" font-weight="400" >1.8  (0.55×)</text>
+<text x="238.0" y="176.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#e8e8e8" text-anchor="end" font-weight="400" >gcc AVX-512, -ffast-math</text>
+<path d="M250.0,164.0 H414.7 Q418.7,164.0 418.7,168.0 V182.0 Q418.7,186.0 414.7,186.0 H250.0 Z" fill="#3987e5"><title>gcc AVX-512, -ffast-math: 26.5 GFLOP/s, 8.26× scalar</title></path>
+<text x="426.7" y="179.0" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#a3a3a3" text-anchor="start" font-weight="400" >26.5  (8.26×)</text>
+<text x="238.0" y="214.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#e8e8e8" text-anchor="end" font-weight="400" >intrinsics, 1 accumulator</text>
+<path d="M250.0,202.0 H425.1 Q429.1,202.0 429.1,206.0 V220.0 Q429.1,224.0 425.1,224.0 H250.0 Z" fill="#3987e5"><title>intrinsics, 1 accumulator: 28.1 GFLOP/s, 8.78× scalar</title></path>
+<text x="437.1" y="217.0" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#a3a3a3" text-anchor="start" font-weight="400" >28.1  (8.78×)</text>
+<text x="238.0" y="252.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#e8e8e8" text-anchor="end" font-weight="400" >intrinsics, 2 accumulators</text>
+<path d="M250.0,240.0 H574.6 Q578.6,240.0 578.6,244.0 V258.0 Q578.6,262.0 574.6,262.0 H250.0 Z" fill="#3987e5"><title>intrinsics, 2 accumulators: 51.5 GFLOP/s, 16.10× scalar</title></path>
+<text x="586.6" y="255.0" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#a3a3a3" text-anchor="start" font-weight="400" >51.5  (16.10×)</text>
+<text x="238.0" y="290.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#e8e8e8" text-anchor="end" font-weight="400" >intrinsics, 4 accumulators</text>
+<path d="M250.0,278.0 H691.0 Q695.0,278.0 695.0,282.0 V296.0 Q695.0,300.0 691.0,300.0 H250.0 Z" fill="#3987e5"><title>intrinsics, 4 accumulators: 69.8 GFLOP/s, 21.80× scalar</title></path>
+<text x="703.0" y="293.0" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#a3a3a3" text-anchor="start" font-weight="400" >69.8  (21.80×)</text>
+<text x="238.0" y="328.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#e8e8e8" text-anchor="end" font-weight="400" >intrinsics, 8 accumulators</text>
+<path d="M250.0,316.0 H661.2 Q665.2,316.0 665.2,320.0 V334.0 Q665.2,338.0 661.2,338.0 H250.0 Z" fill="#3987e5"><title>intrinsics, 8 accumulators: 65.1 GFLOP/s, 20.34× scalar</title></path>
+<text x="673.2" y="331.0" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#a3a3a3" text-anchor="start" font-weight="400" >65.1  (20.34×)</text>
+</svg>

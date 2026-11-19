@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="430" viewBox="0 0 860 430" role="img" aria-labelledby="t d">
+<title id="t">Speedup over scalar for six loops across five compile targets</title><desc id="d">Heatmap. saxpy reaches 9x with AVX-512; leaky ReLU vectorizes only with AVX-512 masking; the strict-IEEE dot product gets slower with AVX-512 and fast only with -ffast-math; the prefix sum never vectorizes.</desc>
+<rect width="860" height="430" rx="10" fill="#111111"/>
+<text x="24.0" y="32.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="16" fill="#e8e8e8" text-anchor="start" font-weight="600" >Same compiler, same source: speedup over scalar depends on the loop, not the register</text>
+<text x="24.0" y="52.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#6b6b6b" text-anchor="start" font-weight="400" >fp32, n = 4096 (in L1), gcc -O3 per target · Xeon (Emerald Rapids), 1 core, gcc 13.3</text>
+<text x="306.0" y="90.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#e8e8e8" text-anchor="middle" font-weight="600" >scalar</text>
+<text x="418.0" y="90.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#e8e8e8" text-anchor="middle" font-weight="600" >SSE2</text>
+<text x="530.0" y="90.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#e8e8e8" text-anchor="middle" font-weight="600" >AVX2</text>
+<text x="642.0" y="90.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#e8e8e8" text-anchor="middle" font-weight="600" >AVX-512</text>
+<text x="754.0" y="84.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#e8e8e8" text-anchor="middle" font-weight="600" >AVX-512</text>
+<text x="754.0" y="97.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#6b6b6b" text-anchor="middle" font-weight="400" >-ffast-math</text>
+<text x="24.0" y="128.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#e8e8e8" text-anchor="start" font-weight="600" >saxpy  y=a·x+y</text>
+<text x="24.0" y="144.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#6b6b6b" text-anchor="start" font-weight="400" >map</text>
+<rect x="251.0" y="109.0" width="110" height="42" rx="4" fill="#2b2b2b"><title>saxpy  y=a·x+y, scalar: 1.00× scalar (0.345 ns/element)</title></rect>
+<text x="306.0" y="135.0" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#e8e8e8" text-anchor="middle" font-weight="600" >1.0×</text>
+<rect x="363.0" y="109.0" width="110" height="42" rx="4" fill="rgba(57,135,229,0.60)"><title>saxpy  y=a·x+y, SSE2: 3.66× scalar (0.094 ns/element)</title></rect>
+<text x="418.0" y="135.0" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="600" >3.7×</text>
+<rect x="475.0" y="109.0" width="110" height="42" rx="4" fill="rgba(57,135,229,0.75)"><title>saxpy  y=a·x+y, AVX2: 6.33× scalar (0.054 ns/element)</title></rect>
+<text x="530.0" y="135.0" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="600" >6.3×</text>
+<rect x="587.0" y="109.0" width="110" height="42" rx="4" fill="rgba(57,135,229,0.84)"><title>saxpy  y=a·x+y, AVX-512: 8.97× scalar (0.038 ns/element)</title></rect>
+<text x="642.0" y="135.0" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="600" >9.0×</text>
+<rect x="699.0" y="109.0" width="110" height="42" rx="4" fill="rgba(57,135,229,0.84)"><title>saxpy  y=a·x+y, AVX-512 -ffast-math: 8.70× scalar (0.040 ns/element)</title></rect>
+<text x="754.0" y="135.0" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="600" >8.7×</text>
+<text x="24.0" y="172.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#e8e8e8" text-anchor="start" font-weight="600" >particle step, SoA</text>
+<text x="24.0" y="188.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#6b6b6b" text-anchor="start" font-weight="400" >map, 3 streams</text>
+<rect x="251.0" y="153.0" width="110" height="42" rx="4" fill="#2b2b2b"><title>particle step, SoA, scalar: 1.00× scalar (1.077 ns/element)</title></rect>
+<text x="306.0" y="179.0" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#e8e8e8" text-anchor="middle" font-weight="600" >1.0×</text>
+<rect x="363.0" y="153.0" width="110" height="42" rx="4" fill="rgba(57,135,229,0.55)"><title>particle step, SoA, SSE2: 3.06× scalar (0.352 ns/element)</title></rect>
+<text x="418.0" y="179.0" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#e8e8e8" text-anchor="middle" font-weight="600" >3.1×</text>
+<rect x="475.0" y="153.0" width="110" height="42" rx="4" fill="rgba(57,135,229,0.63)"><title>particle step, SoA, AVX2: 4.08× scalar (0.264 ns/element)</title></rect>
+<text x="530.0" y="179.0" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="600" >4.1×</text>
+<rect x="587.0" y="153.0" width="110" height="42" rx="4" fill="rgba(57,135,229,0.60)"><title>particle step, SoA, AVX-512: 3.65× scalar (0.295 ns/element)</title></rect>
+<text x="642.0" y="179.0" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="600" >3.6×</text>
+<rect x="699.0" y="153.0" width="110" height="42" rx="4" fill="rgba(57,135,229,0.60)"><title>particle step, SoA, AVX-512 -ffast-math: 3.65× scalar (0.295 ns/element)</title></rect>
+<text x="754.0" y="179.0" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="600" >3.7×</text>
+<text x="24.0" y="216.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#e8e8e8" text-anchor="start" font-weight="600" >leaky ReLU</text>
+<text x="24.0" y="232.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#6b6b6b" text-anchor="start" font-weight="400" >branch → select</text>
+<rect x="251.0" y="197.0" width="110" height="42" rx="4" fill="#2b2b2b"><title>leaky ReLU, scalar: 1.00× scalar (0.892 ns/element)</title></rect>
+<text x="306.0" y="223.0" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#e8e8e8" text-anchor="middle" font-weight="600" >1.0×</text>
+<rect x="363.0" y="197.0" width="110" height="42" rx="4" fill="#2b2b2b"><title>leaky ReLU, SSE2: 1.06× scalar (0.841 ns/element)</title></rect>
+<text x="418.0" y="223.0" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#e8e8e8" text-anchor="middle" font-weight="600" >1.1×</text>
+<rect x="475.0" y="197.0" width="110" height="42" rx="4" fill="#2b2b2b"><title>leaky ReLU, AVX2: 1.01× scalar (0.885 ns/element)</title></rect>
+<text x="530.0" y="223.0" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#e8e8e8" text-anchor="middle" font-weight="600" >1.0×</text>
+<rect x="587.0" y="197.0" width="110" height="42" rx="4" fill="rgba(57,135,229,0.99)"><title>leaky ReLU, AVX-512: 15.62× scalar (0.057 ns/element)</title></rect>
+<text x="642.0" y="223.0" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="600" >15.6×</text>
+<rect x="699.0" y="197.0" width="110" height="42" rx="4" fill="rgba(57,135,229,1.00)"><title>leaky ReLU, AVX-512 -ffast-math: 19.54× scalar (0.046 ns/element)</title></rect>
+<text x="754.0" y="223.0" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="600" >19.5×</text>
+<text x="24.0" y="260.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#e8e8e8" text-anchor="start" font-weight="600" >particle step, AoS</text>
+<text x="24.0" y="276.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#6b6b6b" text-anchor="start" font-weight="400" >interleaved fields</text>
+<rect x="251.0" y="241.0" width="110" height="42" rx="4" fill="#2b2b2b"><title>particle step, AoS, scalar: 1.00× scalar (1.274 ns/element)</title></rect>
+<text x="306.0" y="267.0" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#e8e8e8" text-anchor="middle" font-weight="600" >1.0×</text>
+<rect x="363.0" y="241.0" width="110" height="42" rx="4" fill="#2b2b2b"><title>particle step, AoS, SSE2: 0.93× scalar (1.371 ns/element)</title></rect>
+<text x="418.0" y="267.0" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#e8e8e8" text-anchor="middle" font-weight="600" >0.9×</text>
+<rect x="475.0" y="241.0" width="110" height="42" rx="4" fill="rgba(230,103,103,0.67)"><title>particle step, AoS, AVX2: 0.51× scalar (2.521 ns/element)</title></rect>
+<text x="530.0" y="267.0" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#e8e8e8" text-anchor="middle" font-weight="600" >0.5×</text>
+<rect x="587.0" y="241.0" width="110" height="42" rx="4" fill="#2b2b2b"><title>particle step, AoS, AVX-512: 1.11× scalar (1.152 ns/element)</title></rect>
+<text x="642.0" y="267.0" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#e8e8e8" text-anchor="middle" font-weight="600" >1.1×</text>
+<rect x="699.0" y="241.0" width="110" height="42" rx="4" fill="#2b2b2b"><title>particle step, AoS, AVX-512 -ffast-math: 1.11× scalar (1.152 ns/element)</title></rect>
+<text x="754.0" y="267.0" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#e8e8e8" text-anchor="middle" font-weight="600" >1.1×</text>
+<text x="24.0" y="304.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#e8e8e8" text-anchor="start" font-weight="600" >dot product</text>
+<text x="24.0" y="320.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#6b6b6b" text-anchor="start" font-weight="400" >fp reduction</text>
+<rect x="251.0" y="285.0" width="110" height="42" rx="4" fill="#2b2b2b"><title>dot product, scalar: 1.00× scalar (0.595 ns/element)</title></rect>
+<text x="306.0" y="311.0" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#e8e8e8" text-anchor="middle" font-weight="600" >1.0×</text>
+<rect x="363.0" y="285.0" width="110" height="42" rx="4" fill="#2b2b2b"><title>dot product, SSE2: 0.98× scalar (0.610 ns/element)</title></rect>
+<text x="418.0" y="311.0" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#e8e8e8" text-anchor="middle" font-weight="600" >1.0×</text>
+<rect x="475.0" y="285.0" width="110" height="42" rx="4" fill="#2b2b2b"><title>dot product, AVX2: 0.97× scalar (0.611 ns/element)</title></rect>
+<text x="530.0" y="311.0" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#e8e8e8" text-anchor="middle" font-weight="600" >1.0×</text>
+<rect x="587.0" y="285.0" width="110" height="42" rx="4" fill="rgba(230,103,103,0.65)"><title>dot product, AVX-512: 0.53× scalar (1.124 ns/element)</title></rect>
+<text x="642.0" y="311.0" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#e8e8e8" text-anchor="middle" font-weight="600" >0.5×</text>
+<rect x="699.0" y="285.0" width="110" height="42" rx="4" fill="rgba(57,135,229,0.81)"><title>dot product, AVX-512 -ffast-math: 7.99× scalar (0.074 ns/element)</title></rect>
+<text x="754.0" y="311.0" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="600" >8.0×</text>
+<text x="24.0" y="348.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#e8e8e8" text-anchor="start" font-weight="600" >prefix sum</text>
+<text x="24.0" y="364.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#6b6b6b" text-anchor="start" font-weight="400" >loop-carried</text>
+<rect x="251.0" y="329.0" width="110" height="42" rx="4" fill="#2b2b2b"><title>prefix sum, scalar: 1.00× scalar (0.616 ns/element)</title></rect>
+<text x="306.0" y="355.0" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#e8e8e8" text-anchor="middle" font-weight="600" >1.0×</text>
+<rect x="363.0" y="329.0" width="110" height="42" rx="4" fill="#2b2b2b"><title>prefix sum, SSE2: 1.00× scalar (0.615 ns/element)</title></rect>
+<text x="418.0" y="355.0" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#e8e8e8" text-anchor="middle" font-weight="600" >1.0×</text>
+<rect x="475.0" y="329.0" width="110" height="42" rx="4" fill="#2b2b2b"><title>prefix sum, AVX2: 1.00× scalar (0.616 ns/element)</title></rect>
+<text x="530.0" y="355.0" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#e8e8e8" text-anchor="middle" font-weight="600" >1.0×</text>
+<rect x="587.0" y="329.0" width="110" height="42" rx="4" fill="#2b2b2b"><title>prefix sum, AVX-512: 1.00× scalar (0.615 ns/element)</title></rect>
+<text x="642.0" y="355.0" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#e8e8e8" text-anchor="middle" font-weight="600" >1.0×</text>
+<rect x="699.0" y="329.0" width="110" height="42" rx="4" fill="#2b2b2b"><title>prefix sum, AVX-512 -ffast-math: 0.98× scalar (0.630 ns/element)</title></rect>
+<text x="754.0" y="355.0" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#e8e8e8" text-anchor="middle" font-weight="600" >1.0×</text>
+<rect x="250" y="389" width="12" height="12" rx="2" fill="rgba(57,135,229,0.9)"/>
+<text x="268.0" y="399.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#a3a3a3" text-anchor="start" font-weight="400" >faster than scalar</text>
+<rect x="400" y="389" width="12" height="12" rx="2" fill="#2b2b2b"/>
+<text x="418.0" y="399.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#a3a3a3" text-anchor="start" font-weight="400" >no change (not vectorized, or bound elsewhere)</text>
+<rect x="710" y="389" width="12" height="12" rx="2" fill="rgba(230,103,103,0.9)"/>
+<text x="728.0" y="399.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#a3a3a3" text-anchor="start" font-weight="400" >slower than scalar</text>
+</svg>

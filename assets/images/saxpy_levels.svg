@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="420" viewBox="0 0 860 420" role="img" aria-labelledby="t d">
+<title id="t">saxpy bandwidth by vector width and memory level</title><desc id="d">Grouped bars: in L1 AVX-512 moves about nine times the bytes of scalar code; in DRAM all vector widths converge near 20 GB/s.</desc>
+<rect width="860" height="420" rx="10" fill="#111111"/>
+<text x="24.0" y="32.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="16" fill="#e8e8e8" text-anchor="start" font-weight="600" >Wider registers pay off only while the data is close to the core</text>
+<text x="24.0" y="52.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#6b6b6b" text-anchor="start" font-weight="400" >saxpy y = a·x + y, fp32, GB/s moved · Xeon (Emerald Rapids), 1 core, gcc 13.3</text>
+<line x1="70.0" y1="360.0" x2="830.0" y2="360.0" stroke="#262626" stroke-width="1"/>
+<text x="62.0" y="364.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#6b6b6b" text-anchor="end" font-weight="400" >0</text>
+<line x1="70.0" y1="322.9" x2="830.0" y2="322.9" stroke="#262626" stroke-width="1"/>
+<text x="62.0" y="326.9" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#6b6b6b" text-anchor="end" font-weight="400" >50</text>
+<line x1="70.0" y1="285.7" x2="830.0" y2="285.7" stroke="#262626" stroke-width="1"/>
+<text x="62.0" y="289.7" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#6b6b6b" text-anchor="end" font-weight="400" >100</text>
+<line x1="70.0" y1="248.6" x2="830.0" y2="248.6" stroke="#262626" stroke-width="1"/>
+<text x="62.0" y="252.6" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#6b6b6b" text-anchor="end" font-weight="400" >150</text>
+<line x1="70.0" y1="211.4" x2="830.0" y2="211.4" stroke="#262626" stroke-width="1"/>
+<text x="62.0" y="215.4" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#6b6b6b" text-anchor="end" font-weight="400" >200</text>
+<line x1="70.0" y1="174.3" x2="830.0" y2="174.3" stroke="#262626" stroke-width="1"/>
+<text x="62.0" y="178.3" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#6b6b6b" text-anchor="end" font-weight="400" >250</text>
+<line x1="70.0" y1="137.1" x2="830.0" y2="137.1" stroke="#262626" stroke-width="1"/>
+<text x="62.0" y="141.1" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#6b6b6b" text-anchor="end" font-weight="400" >300</text>
+<line x1="70.0" y1="100.0" x2="830.0" y2="100.0" stroke="#262626" stroke-width="1"/>
+<text x="62.0" y="104.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#6b6b6b" text-anchor="end" font-weight="400" >350</text>
+<text x="62.0" y="86.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#6b6b6b" text-anchor="end" font-weight="400" >GB/s</text>
+<path d="M114.0,360.0 V338.4 Q114.0,334.4 118.0,334.4 H134.0 Q138.0,334.4 138.0,338.4 V360.0 Z" fill="#3987e5"><title>scalar, L1: 34.5 GB/s (0.348 ns/element)</title></path>
+<text x="126.0" y="328.4" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#e8e8e8" text-anchor="middle" font-weight="600" >34</text>
+<path d="M140.0,360.0 V268.9 Q140.0,264.9 144.0,264.9 H160.0 Q164.0,264.9 164.0,268.9 V360.0 Z" fill="#d95926"><title>SSE2 128-bit, L1: 128.1 GB/s (0.094 ns/element)</title></path>
+<path d="M166.0,360.0 V200.6 Q166.0,196.6 170.0,196.6 H186.0 Q190.0,196.6 190.0,200.6 V360.0 Z" fill="#199e70"><title>AVX2 256-bit, L1: 220.0 GB/s (0.055 ns/element)</title></path>
+<path d="M192.0,360.0 V131.0 Q192.0,127.0 196.0,127.0 H212.0 Q216.0,127.0 216.0,131.0 V360.0 Z" fill="#c98500"><title>AVX-512, L1: 313.7 GB/s (0.038 ns/element)</title></path>
+<text x="204.0" y="121.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#e8e8e8" text-anchor="middle" font-weight="600" >314</text>
+<text x="165.0" y="380.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle" font-weight="600" >L1</text>
+<text x="165.0" y="397.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#6b6b6b" text-anchor="middle" font-weight="400" >16 KB / array · AVX-512 9.1× scalar</text>
+<path d="M304.0,360.0 V341.0 Q304.0,337.0 308.0,337.0 H324.0 Q328.0,337.0 328.0,341.0 V360.0 Z" fill="#3987e5"><title>scalar, L2: 31.0 GB/s (0.387 ns/element)</title></path>
+<text x="316.0" y="331.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#e8e8e8" text-anchor="middle" font-weight="600" >31</text>
+<path d="M330.0,360.0 V291.2 Q330.0,287.2 334.0,287.2 H350.0 Q354.0,287.2 354.0,291.2 V360.0 Z" fill="#d95926"><title>SSE2 128-bit, L2: 98.1 GB/s (0.122 ns/element)</title></path>
+<path d="M356.0,360.0 V262.6 Q356.0,258.6 360.0,258.6 H376.0 Q380.0,258.6 380.0,262.6 V360.0 Z" fill="#199e70"><title>AVX2 256-bit, L2: 136.6 GB/s (0.088 ns/element)</title></path>
+<path d="M382.0,360.0 V272.8 Q382.0,268.8 386.0,268.8 H402.0 Q406.0,268.8 406.0,272.8 V360.0 Z" fill="#c98500"><title>AVX-512, L2: 122.8 GB/s (0.098 ns/element)</title></path>
+<text x="394.0" y="262.8" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#e8e8e8" text-anchor="middle" font-weight="600" >123</text>
+<text x="355.0" y="380.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle" font-weight="600" >L2</text>
+<text x="355.0" y="397.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#6b6b6b" text-anchor="middle" font-weight="400" >256 KB · AVX-512 4.0× scalar</text>
+<path d="M494.0,360.0 V345.1 Q494.0,341.1 498.0,341.1 H514.0 Q518.0,341.1 518.0,345.1 V360.0 Z" fill="#3987e5"><title>scalar, L3: 25.5 GB/s (0.471 ns/element)</title></path>
+<text x="506.0" y="335.1" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#e8e8e8" text-anchor="middle" font-weight="600" >25</text>
+<path d="M520.0,360.0 V335.4 Q520.0,331.4 524.0,331.4 H540.0 Q544.0,331.4 544.0,335.4 V360.0 Z" fill="#d95926"><title>SSE2 128-bit, L3: 38.5 GB/s (0.312 ns/element)</title></path>
+<path d="M546.0,360.0 V335.1 Q546.0,331.1 550.0,331.1 H566.0 Q570.0,331.1 570.0,335.1 V360.0 Z" fill="#199e70"><title>AVX2 256-bit, L3: 39.0 GB/s (0.308 ns/element)</title></path>
+<path d="M572.0,360.0 V336.4 Q572.0,332.4 576.0,332.4 H592.0 Q596.0,332.4 596.0,336.4 V360.0 Z" fill="#c98500"><title>AVX-512, L3: 37.2 GB/s (0.323 ns/element)</title></path>
+<text x="584.0" y="326.4" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#e8e8e8" text-anchor="middle" font-weight="600" >37</text>
+<text x="545.0" y="380.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle" font-weight="600" >L3</text>
+<text x="545.0" y="397.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#6b6b6b" text-anchor="middle" font-weight="400" >4 MB · AVX-512 1.5× scalar</text>
+<path d="M684.0,360.0 V355.3 Q684.0,351.3 688.0,351.3 H704.0 Q708.0,351.3 708.0,355.3 V360.0 Z" fill="#3987e5"><title>scalar, DRAM: 11.7 GB/s (1.029 ns/element)</title></path>
+<text x="696.0" y="345.3" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#e8e8e8" text-anchor="middle" font-weight="600" >12</text>
+<path d="M710.0,360.0 V350.4 Q710.0,346.4 714.0,346.4 H730.0 Q734.0,346.4 734.0,350.4 V360.0 Z" fill="#d95926"><title>SSE2 128-bit, DRAM: 18.3 GB/s (0.656 ns/element)</title></path>
+<path d="M736.0,360.0 V348.9 Q736.0,344.9 740.0,344.9 H756.0 Q760.0,344.9 760.0,348.9 V360.0 Z" fill="#199e70"><title>AVX2 256-bit, DRAM: 20.3 GB/s (0.590 ns/element)</title></path>
+<path d="M762.0,360.0 V348.6 Q762.0,344.6 766.0,344.6 H782.0 Q786.0,344.6 786.0,348.6 V360.0 Z" fill="#c98500"><title>AVX-512, DRAM: 20.8 GB/s (0.578 ns/element)</title></path>
+<text x="774.0" y="338.6" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#e8e8e8" text-anchor="middle" font-weight="600" >21</text>
+<text x="735.0" y="380.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#e8e8e8" text-anchor="middle" font-weight="600" >DRAM</text>
+<text x="735.0" y="397.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#6b6b6b" text-anchor="middle" font-weight="400" >256 MB · AVX-512 1.8× scalar</text>
+<line x1="70.0" y1="360.0" x2="830.0" y2="360.0" stroke="#3a3a3a" stroke-width="1"/>
+<rect x="70.0" y="75.0" width="10" height="10" rx="2" fill="#3987e5"/>
+<text x="85.0" y="84.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#a3a3a3" text-anchor="start" font-weight="400" >scalar</text>
+<rect x="140.8" y="75.0" width="10" height="10" rx="2" fill="#d95926"/>
+<text x="155.8" y="84.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#a3a3a3" text-anchor="start" font-weight="400" >SSE2 128-bit</text>
+<rect x="249.4" y="75.0" width="10" height="10" rx="2" fill="#199e70"/>
+<text x="264.4" y="84.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#a3a3a3" text-anchor="start" font-weight="400" >AVX2 256-bit</text>
+<rect x="358.0" y="75.0" width="10" height="10" rx="2" fill="#c98500"/>
+<text x="373.0" y="84.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#a3a3a3" text-anchor="start" font-weight="400" >AVX-512</text>
+</svg>

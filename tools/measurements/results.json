@@ -1,0 +1,1187 @@
+{
+ "machine": {
+  "cpu": "Intel(R) Xeon(R) Processor @ 2.10GHz",
+  "cpu_model_number": "207",
+  "compiler": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+  "isa": [
+   "avx2",
+   "avx512f",
+   "avx512_fp16",
+   "avx512_bf16",
+   "avx512_vnni",
+   "amx_tile"
+  ],
+  "python": "3.13.18",
+  "threads": 1,
+  "method": "pinned to one core; best of 3 processes x best of 5 timed trials",
+  "numpy": "2.5.3"
+ },
+ "flags": {
+  "scalar": [
+   "-O2",
+   "-fno-tree-vectorize",
+   "-fno-tree-slp-vectorize",
+   "-march=x86-64"
+  ],
+  "sse2": [
+   "-O3",
+   "-march=x86-64"
+  ],
+  "avx2": [
+   "-O3",
+   "-march=x86-64-v3"
+  ],
+  "avx512": [
+   "-O3",
+   "-march=x86-64-v4",
+   "-mprefer-vector-width=512"
+  ],
+  "avx512_fast": [
+   "-O3",
+   "-march=x86-64-v4",
+   "-mprefer-vector-width=512",
+   "-ffast-math"
+  ]
+ },
+ "experiments": {
+  "width_ladder_L1": [
+   {
+    "variant": "scalar",
+    "kernel": "saxpy",
+    "n": 4096,
+    "stride": 1,
+    "sec": 1.412207e-06,
+    "checksum": -24022837,
+    "ns_per_elem": 0.34477709960937497,
+    "gflops": 5.800849308918593,
+    "gbps": 34.80509585351156
+   },
+   {
+    "variant": "scalar",
+    "kernel": "leaky",
+    "n": 4096,
+    "stride": 1,
+    "sec": 3.655586e-06,
+    "checksum": 938.138685,
+    "ns_per_elem": 0.89247705078125,
+    "gflops": 1.1204769905563705,
+    "gbps": 8.963815924450964
+   },
+   {
+    "variant": "scalar",
+    "kernel": "dot",
+    "n": 4096,
+    "stride": 1,
+    "sec": 2.438205e-06,
+    "checksum": 4.07661295,
+    "ns_per_elem": 0.595264892578125,
+    "gflops": 3.3598487411846008,
+    "gbps": 13.439394964738403
+   },
+   {
+    "variant": "scalar",
+    "kernel": "prefix",
+    "n": 4096,
+    "stride": 1,
+    "sec": 2.52361e-06,
+    "checksum": -163507.839,
+    "ns_per_elem": 0.61611572265625,
+    "gflops": 1.6230717107635488,
+    "gbps": 12.98457368610839
+   },
+   {
+    "variant": "scalar",
+    "kernel": "step_soa",
+    "n": 4096,
+    "stride": 1,
+    "sec": 4.412907e-06,
+    "checksum": -51.7148647,
+    "ns_per_elem": 1.0773698730468748,
+    "gflops": 5.56911804395606,
+    "gbps": 33.41470826373636
+   },
+   {
+    "variant": "scalar",
+    "kernel": "step_aos",
+    "n": 4096,
+    "stride": 1,
+    "sec": 5.216988e-06,
+    "checksum": -51.7148647,
+    "ns_per_elem": 1.2736787109375,
+    "gflops": 4.710764142068182,
+    "gbps": 37.68611313654546
+   },
+   {
+    "variant": "sse2",
+    "kernel": "saxpy",
+    "n": 4096,
+    "stride": 1,
+    "sec": 3.862865e-07,
+    "checksum": -96401593.1,
+    "ns_per_elem": 0.0943082275390625,
+    "gflops": 21.207057456059168,
+    "gbps": 127.24234473635501
+   },
+   {
+    "variant": "sse2",
+    "kernel": "leaky",
+    "n": 4096,
+    "stride": 1,
+    "sec": 3.442809e-06,
+    "checksum": 938.138685,
+    "ns_per_elem": 0.8405295410156249,
+    "gflops": 1.189726179988492,
+    "gbps": 9.517809439907936
+   },
+   {
+    "variant": "sse2",
+    "kernel": "dot",
+    "n": 4096,
+    "stride": 1,
+    "sec": 2.497688e-06,
+    "checksum": 4.07661295,
+    "ns_per_elem": 0.609787109375,
+    "gflops": 3.2798331897338664,
+    "gbps": 13.119332758935466
+   },
+   {
+    "variant": "sse2",
+    "kernel": "prefix",
+    "n": 4096,
+    "stride": 1,
+    "sec": 2.521044e-06,
+    "checksum": -163507.839,
+    "ns_per_elem": 0.6154892578125,
+    "gflops": 1.6247237255676614,
+    "gbps": 12.997789804541291
+   },
+   {
+    "variant": "sse2",
+    "kernel": "step_soa",
+    "n": 4096,
+    "stride": 1,
+    "sec": 1.443518e-06,
+    "checksum": -51.7148647,
+    "ns_per_elem": 0.35242138671875,
+    "gflops": 17.025073466350957,
+    "gbps": 102.15044079810573
+   },
+   {
+    "variant": "sse2",
+    "kernel": "step_aos",
+    "n": 4096,
+    "stride": 1,
+    "sec": 5.614891e-06,
+    "checksum": -51.7148647,
+    "ns_per_elem": 1.370822998046875,
+    "gflops": 4.376932695576816,
+    "gbps": 35.015461564614526
+   },
+   {
+    "variant": "avx2",
+    "kernel": "saxpy",
+    "n": 4096,
+    "stride": 1,
+    "sec": 2.229438e-07,
+    "checksum": -191282385,
+    "ns_per_elem": 0.054429638671875,
+    "gflops": 36.744686329021036,
+    "gbps": 220.46811797412622
+   },
+   {
+    "variant": "avx2",
+    "kernel": "leaky",
+    "n": 4096,
+    "stride": 1,
+    "sec": 3.624199e-06,
+    "checksum": 938.138685,
+    "ns_per_elem": 0.884814208984375,
+    "gflops": 1.1301807654601748,
+    "gbps": 9.041446123681398
+   },
+   {
+    "variant": "avx2",
+    "kernel": "dot",
+    "n": 4096,
+    "stride": 1,
+    "sec": 2.501663e-06,
+    "checksum": 4.07661295,
+    "ns_per_elem": 0.610757568359375,
+    "gflops": 3.2746217216307714,
+    "gbps": 13.098486886523085
+   },
+   {
+    "variant": "avx2",
+    "kernel": "prefix",
+    "n": 4096,
+    "stride": 1,
+    "sec": 2.521434e-06,
+    "checksum": -163507.839,
+    "ns_per_elem": 0.61558447265625,
+    "gflops": 1.6244724232321766,
+    "gbps": 12.995779385857412
+   },
+   {
+    "variant": "avx2",
+    "kernel": "step_soa",
+    "n": 4096,
+    "stride": 1,
+    "sec": 1.08291e-06,
+    "checksum": -51.7148647,
+    "ns_per_elem": 0.26438232421874996,
+    "gflops": 22.694406737402005,
+    "gbps": 136.16644042441203
+   },
+   {
+    "variant": "avx2",
+    "kernel": "step_aos",
+    "n": 4096,
+    "stride": 1,
+    "sec": 1.032726e-05,
+    "checksum": -51.7148647,
+    "ns_per_elem": 2.5213037109375,
+    "gflops": 2.3797212426142074,
+    "gbps": 19.03776994091366
+   },
+   {
+    "variant": "avx512",
+    "kernel": "saxpy",
+    "n": 4096,
+    "stride": 1,
+    "sec": 1.573502e-07,
+    "checksum": -191282385,
+    "ns_per_elem": 0.038415576171875,
+    "gflops": 52.06221536420036,
+    "gbps": 312.37329218520216
+   },
+   {
+    "variant": "avx512",
+    "kernel": "leaky",
+    "n": 4096,
+    "stride": 1,
+    "sec": 2.340396e-07,
+    "checksum": 938.138685,
+    "ns_per_elem": 0.05713857421875,
+    "gflops": 17.50131174382455,
+    "gbps": 140.0104939505964
+   },
+   {
+    "variant": "avx512",
+    "kernel": "dot",
+    "n": 4096,
+    "stride": 1,
+    "sec": 4.602476e-06,
+    "checksum": 4.07661295,
+    "ns_per_elem": 1.1236513671875,
+    "gflops": 1.7799115085010764,
+    "gbps": 7.1196460340043055
+   },
+   {
+    "variant": "avx512",
+    "kernel": "prefix",
+    "n": 4096,
+    "stride": 1,
+    "sec": 2.519842e-06,
+    "checksum": -163507.839,
+    "ns_per_elem": 0.61519580078125,
+    "gflops": 1.6254987415877664,
+    "gbps": 13.003989932702131
+   },
+   {
+    "variant": "avx512",
+    "kernel": "step_soa",
+    "n": 4096,
+    "stride": 1,
+    "sec": 1.209369e-06,
+    "checksum": -51.7148647,
+    "ns_per_elem": 0.295256103515625,
+    "gflops": 20.321341129134286,
+    "gbps": 121.92804677480571
+   },
+   {
+    "variant": "avx512",
+    "kernel": "step_aos",
+    "n": 4096,
+    "stride": 1,
+    "sec": 4.718864e-06,
+    "checksum": -51.7148647,
+    "ns_per_elem": 1.15206640625,
+    "gflops": 5.208033119835622,
+    "gbps": 41.664264958684974
+   },
+   {
+    "variant": "avx512_fast",
+    "kernel": "saxpy",
+    "n": 4096,
+    "stride": 1,
+    "sec": 1.623899e-07,
+    "checksum": -191282385,
+    "ns_per_elem": 0.039645971679687496,
+    "gflops": 50.44648712758614,
+    "gbps": 302.67892276551686
+   },
+   {
+    "variant": "avx512_fast",
+    "kernel": "leaky",
+    "n": 4096,
+    "stride": 1,
+    "sec": 1.871141e-07,
+    "checksum": 938.138685,
+    "ns_per_elem": 0.0456821533203125,
+    "gflops": 21.890386667813914,
+    "gbps": 175.1230933425113
+   },
+   {
+    "variant": "avx512_fast",
+    "kernel": "dot",
+    "n": 4096,
+    "stride": 1,
+    "sec": 3.051458e-07,
+    "checksum": 4.07659435,
+    "ns_per_elem": 0.074498486328125,
+    "gflops": 26.846183037747856,
+    "gbps": 107.38473215099143
+   },
+   {
+    "variant": "avx512_fast",
+    "kernel": "prefix",
+    "n": 4096,
+    "stride": 1,
+    "sec": 2.578963e-06,
+    "checksum": -163507.839,
+    "ns_per_elem": 0.6296296386718749,
+    "gflops": 1.5882352713086616,
+    "gbps": 12.705882170469293
+   },
+   {
+    "variant": "avx512_fast",
+    "kernel": "step_soa",
+    "n": 4096,
+    "stride": 1,
+    "sec": 1.207557e-06,
+    "checksum": -51.7148647,
+    "ns_per_elem": 0.294813720703125,
+    "gflops": 20.35183432334871,
+    "gbps": 122.11100594009227
+   },
+   {
+    "variant": "avx512_fast",
+    "kernel": "step_aos",
+    "n": 4096,
+    "stride": 1,
+    "sec": 4.718924e-06,
+    "checksum": -51.7148647,
+    "ns_per_elem": 1.1520810546875,
+    "gflops": 5.207966900929111,
+    "gbps": 41.663735207432886
+   },
+   {
+    "variant": "avx512",
+    "kernel": "dot_avx512_8acc",
+    "n": 4096,
+    "stride": 1,
+    "sec": 1.252184e-07,
+    "checksum": 4.07659006,
+    "ns_per_elem": 0.0305708984375,
+    "gflops": 65.42169521412188,
+    "gbps": 261.68678085648753
+   },
+   {
+    "variant": "avx512",
+    "kernel": "leaky_avx512",
+    "n": 4096,
+    "stride": 1,
+    "sec": 2.041514e-07,
+    "checksum": 938.138685,
+    "ns_per_elem": 0.049841650390625,
+    "gflops": 20.063541077847127,
+    "gbps": 160.50832862277701
+   }
+  ],
+  "saxpy_memory_levels": [
+   {
+    "variant": "scalar",
+    "kernel": "saxpy",
+    "n": 4096,
+    "stride": 1,
+    "sec": 1.426732e-06,
+    "checksum": -24022837,
+    "ns_per_elem": 0.3483232421875,
+    "gflops": 5.741793132837842,
+    "gbps": 34.450758797027056
+   },
+   {
+    "variant": "scalar",
+    "kernel": "saxpy",
+    "n": 65536,
+    "stride": 1,
+    "sec": 2.535105e-05,
+    "checksum": -750562.352,
+    "ns_per_elem": 0.3868263244628906,
+    "gflops": 5.170278943081253,
+    "gbps": 31.02167365848752
+   },
+   {
+    "variant": "scalar",
+    "kernel": "saxpy",
+    "n": 1048576,
+    "stride": 1,
+    "sec": 0.000493556,
+    "checksum": -93774.3341,
+    "ns_per_elem": 0.4706916809082032,
+    "gflops": 4.2490659621198,
+    "gbps": 25.4943957727188
+   },
+   {
+    "variant": "scalar",
+    "kernel": "saxpy",
+    "n": 67108864,
+    "stride": 1,
+    "sec": 0.06902959,
+    "checksum": -680.022423,
+    "ns_per_elem": 1.0286210477352142,
+    "gflops": 1.944350647309364,
+    "gbps": 11.666103883856184
+   },
+   {
+    "variant": "sse2",
+    "kernel": "saxpy",
+    "n": 4096,
+    "stride": 1,
+    "sec": 3.838002e-07,
+    "checksum": -96401593.1,
+    "ns_per_elem": 0.093701220703125,
+    "gflops": 21.344439111808697,
+    "gbps": 128.06663467085218
+   },
+   {
+    "variant": "sse2",
+    "kernel": "saxpy",
+    "n": 65536,
+    "stride": 1,
+    "sec": 8.020164e-06,
+    "checksum": -6005570.21,
+    "ns_per_elem": 0.12237799072265625,
+    "gflops": 16.342807952555585,
+    "gbps": 98.05684771533352
+   },
+   {
+    "variant": "sse2",
+    "kernel": "saxpy",
+    "n": 1048576,
+    "stride": 1,
+    "sec": 0.0003271785,
+    "checksum": -93774.3341,
+    "ns_per_elem": 0.31202173233032227,
+    "gflops": 6.409809935555056,
+    "gbps": 38.45885961333034
+   },
+   {
+    "variant": "sse2",
+    "kernel": "saxpy",
+    "n": 67108864,
+    "stride": 1,
+    "sec": 0.04404704,
+    "checksum": -680.022423,
+    "ns_per_elem": 0.6563520431518555,
+    "gflops": 3.047145233822749,
+    "gbps": 18.282871402936497
+   },
+   {
+    "variant": "avx2",
+    "kernel": "saxpy",
+    "n": 4096,
+    "stride": 1,
+    "sec": 2.234542e-07,
+    "checksum": -191282385,
+    "ns_per_elem": 0.054554248046875,
+    "gflops": 36.66075643241434,
+    "gbps": 219.96453859448602
+   },
+   {
+    "variant": "avx2",
+    "kernel": "saxpy",
+    "n": 65536,
+    "stride": 1,
+    "sec": 5.758921e-06,
+    "checksum": -6005566.74,
+    "ns_per_elem": 0.08787416076660157,
+    "gflops": 22.759819070273753,
+    "gbps": 136.55891442164253
+   },
+   {
+    "variant": "avx2",
+    "kernel": "saxpy",
+    "n": 1048576,
+    "stride": 1,
+    "sec": 0.0003229083,
+    "checksum": -93774.336,
+    "ns_per_elem": 0.3079493522644043,
+    "gflops": 6.494574465877775,
+    "gbps": 38.967446795266646
+   },
+   {
+    "variant": "avx2",
+    "kernel": "saxpy",
+    "n": 67108864,
+    "stride": 1,
+    "sec": 0.03960876,
+    "checksum": -680.02241,
+    "ns_per_elem": 0.5902165174484253,
+    "gflops": 3.3885869691452095,
+    "gbps": 20.331521814871255
+   },
+   {
+    "variant": "avx512",
+    "kernel": "saxpy",
+    "n": 4096,
+    "stride": 1,
+    "sec": 1.56693e-07,
+    "checksum": -191282385,
+    "ns_per_elem": 0.038255126953125,
+    "gflops": 52.280574116265555,
+    "gbps": 313.68344469759336
+   },
+   {
+    "variant": "avx512",
+    "kernel": "saxpy",
+    "n": 65536,
+    "stride": 1,
+    "sec": 6.404444e-06,
+    "checksum": -6005566.74,
+    "ns_per_elem": 0.09772406005859376,
+    "gflops": 20.465789067716102,
+    "gbps": 122.79473440629661
+   },
+   {
+    "variant": "avx512",
+    "kernel": "saxpy",
+    "n": 1048576,
+    "stride": 1,
+    "sec": 0.0003381823,
+    "checksum": -93774.336,
+    "ns_per_elem": 0.32251577377319335,
+    "gflops": 6.201247078868409,
+    "gbps": 37.20748247321045
+   },
+   {
+    "variant": "avx512",
+    "kernel": "saxpy",
+    "n": 67108864,
+    "stride": 1,
+    "sec": 0.03878012,
+    "checksum": -680.02241,
+    "ns_per_elem": 0.5778688192367554,
+    "gflops": 3.46099310677739,
+    "gbps": 20.76595864066434
+   }
+  ],
+  "stride_sweep": [
+   {
+    "variant": "scalar",
+    "kernel": "strided",
+    "n": 1048576,
+    "stride": 1,
+    "sec": 0.0004129412,
+    "checksum": -226.988995,
+    "ns_per_elem": 0.3938114166259766,
+    "gflops": 2.539286464997922,
+    "gbps": 20.314291719983377
+   },
+   {
+    "variant": "avx512",
+    "kernel": "strided",
+    "n": 1048576,
+    "stride": 1,
+    "sec": 0.0003159842,
+    "checksum": -226.988995,
+    "ns_per_elem": 0.3013460159301758,
+    "gflops": 3.3184444032328195,
+    "gbps": 26.547555225862556
+   },
+   {
+    "variant": "avx512",
+    "kernel": "strided_gather",
+    "n": 1048576,
+    "stride": 1,
+    "sec": 0.0003426933,
+    "checksum": -226.988995,
+    "ns_per_elem": 0.32681779861450194,
+    "gflops": 3.059808872831771,
+    "gbps": 24.47847098265417
+   },
+   {
+    "variant": "scalar",
+    "kernel": "strided",
+    "n": 1048576,
+    "stride": 2,
+    "sec": 0.000507402,
+    "checksum": -261.612255,
+    "ns_per_elem": 0.48389625549316406,
+    "gflops": 2.0665586655157058,
+    "gbps": 16.532469324125646
+   },
+   {
+    "variant": "avx512",
+    "kernel": "strided",
+    "n": 1048576,
+    "stride": 2,
+    "sec": 0.0004780275,
+    "checksum": -261.612255,
+    "ns_per_elem": 0.45588254928588867,
+    "gflops": 2.193547442354258,
+    "gbps": 17.548379538834062
+   },
+   {
+    "variant": "avx512",
+    "kernel": "strided_gather",
+    "n": 1048576,
+    "stride": 2,
+    "sec": 0.0004891038,
+    "checksum": -261.612255,
+    "ns_per_elem": 0.4664457321166992,
+    "gflops": 2.1438721187608847,
+    "gbps": 17.150976950087077
+   },
+   {
+    "variant": "scalar",
+    "kernel": "strided",
+    "n": 1048576,
+    "stride": 4,
+    "sec": 0.0007817195,
+    "checksum": -159.56039,
+    "ns_per_elem": 0.7455058097839355,
+    "gflops": 1.341371169581928,
+    "gbps": 10.730969356655423
+   },
+   {
+    "variant": "avx512",
+    "kernel": "strided",
+    "n": 1048576,
+    "stride": 4,
+    "sec": 0.0007733236,
+    "checksum": -159.56039,
+    "ns_per_elem": 0.7374988555908203,
+    "gflops": 1.355934307449042,
+    "gbps": 10.847474459592336
+   },
+   {
+    "variant": "avx512",
+    "kernel": "strided_gather",
+    "n": 1048576,
+    "stride": 4,
+    "sec": 0.0008095396,
+    "checksum": -159.56039,
+    "ns_per_elem": 0.772037124633789,
+    "gflops": 1.2952744992338856,
+    "gbps": 10.362195993871085
+   },
+   {
+    "variant": "scalar",
+    "kernel": "strided",
+    "n": 1048576,
+    "stride": 8,
+    "sec": 0.001510676,
+    "checksum": -65.1507225,
+    "ns_per_elem": 1.4406929016113281,
+    "gflops": 0.6941104512152174,
+    "gbps": 5.552883609721739
+   },
+   {
+    "variant": "avx512",
+    "kernel": "strided",
+    "n": 1048576,
+    "stride": 8,
+    "sec": 0.001530021,
+    "checksum": -65.1507225,
+    "ns_per_elem": 1.459141731262207,
+    "gflops": 0.6853343842993006,
+    "gbps": 5.482675074394405
+   },
+   {
+    "variant": "avx512",
+    "kernel": "strided_gather",
+    "n": 1048576,
+    "stride": 8,
+    "sec": 0.001422195,
+    "checksum": -65.1507225,
+    "ns_per_elem": 1.3563108444213867,
+    "gflops": 0.7372941122701177,
+    "gbps": 5.898352898160941
+   },
+   {
+    "variant": "scalar",
+    "kernel": "strided",
+    "n": 1048576,
+    "stride": 16,
+    "sec": 0.002624623,
+    "checksum": -176.886959,
+    "ns_per_elem": 2.503035545349121,
+    "gflops": 0.3995149017592241,
+    "gbps": 3.196119214073793
+   },
+   {
+    "variant": "avx512",
+    "kernel": "strided",
+    "n": 1048576,
+    "stride": 16,
+    "sec": 0.002599445,
+    "checksum": -176.886959,
+    "ns_per_elem": 2.4790239334106445,
+    "gflops": 0.40338456862907274,
+    "gbps": 3.227076549032582
+   },
+   {
+    "variant": "avx512",
+    "kernel": "strided_gather",
+    "n": 1048576,
+    "stride": 16,
+    "sec": 0.002653296,
+    "checksum": -176.886959,
+    "ns_per_elem": 2.5303802490234375,
+    "gflops": 0.39519752036712075,
+    "gbps": 3.161580162936966
+   },
+   {
+    "variant": "scalar",
+    "kernel": "strided",
+    "n": 1048576,
+    "stride": 32,
+    "sec": 0.008717375,
+    "checksum": -46.0502892,
+    "ns_per_elem": 8.313536643981934,
+    "gflops": 0.12028575115788871,
+    "gbps": 0.9622860092631097
+   },
+   {
+    "variant": "avx512",
+    "kernel": "strided",
+    "n": 1048576,
+    "stride": 32,
+    "sec": 0.008413248,
+    "checksum": -46.0502892,
+    "ns_per_elem": 8.02349853515625,
+    "gflops": 0.12463391070844458,
+    "gbps": 0.9970712856675567
+   },
+   {
+    "variant": "avx512",
+    "kernel": "strided_gather",
+    "n": 1048576,
+    "stride": 32,
+    "sec": 0.009499623,
+    "checksum": -46.0502892,
+    "ns_per_elem": 9.05954647064209,
+    "gflops": 0.11038080142759349,
+    "gbps": 0.8830464114207479
+   }
+  ],
+  "dot_accumulators_L1": [
+   {
+    "variant": "scalar",
+    "kernel": "dot",
+    "n": 4096,
+    "stride": 1,
+    "sec": 2.558608e-06,
+    "checksum": 4.07661295,
+    "ns_per_elem": 0.62466015625,
+    "gflops": 3.201740946639735,
+    "gbps": 12.80696378655894
+   },
+   {
+    "variant": "avx512",
+    "kernel": "dot",
+    "n": 4096,
+    "stride": 1,
+    "sec": 4.626155e-06,
+    "checksum": 4.07661295,
+    "ns_per_elem": 1.129432373046875,
+    "gflops": 1.7708010215827181,
+    "gbps": 7.0832040863308725
+   },
+   {
+    "variant": "avx512_fast",
+    "kernel": "dot",
+    "n": 4096,
+    "stride": 1,
+    "sec": 3.09584e-07,
+    "checksum": 4.07659435,
+    "ns_per_elem": 0.07558203125,
+    "gflops": 26.461315830275467,
+    "gbps": 105.84526332110187
+   },
+   {
+    "variant": "avx512",
+    "kernel": "dot_avx512_1acc",
+    "n": 4096,
+    "stride": 1,
+    "sec": 2.915426e-07,
+    "checksum": 4.0765934,
+    "ns_per_elem": 0.071177392578125,
+    "gflops": 28.09880957362663,
+    "gbps": 112.39523829450653
+   },
+   {
+    "variant": "avx512",
+    "kernel": "dot_avx512_2acc",
+    "n": 4096,
+    "stride": 1,
+    "sec": 1.58916e-07,
+    "checksum": 4.0765934,
+    "ns_per_elem": 0.0387978515625,
+    "gflops": 51.54924614261623,
+    "gbps": 206.1969845704649
+   },
+   {
+    "variant": "avx512",
+    "kernel": "dot_avx512_4acc",
+    "n": 4096,
+    "stride": 1,
+    "sec": 1.17356e-07,
+    "checksum": 4.07659006,
+    "ns_per_elem": 0.0286513671875,
+    "gflops": 69.80469681993252,
+    "gbps": 279.21878727973007
+   },
+   {
+    "variant": "avx512",
+    "kernel": "dot_avx512_8acc",
+    "n": 4096,
+    "stride": 1,
+    "sec": 1.257719e-07,
+    "checksum": 4.07659006,
+    "ns_per_elem": 0.0307060302734375,
+    "gflops": 65.13378584564596,
+    "gbps": 260.53514338258384
+   }
+  ],
+  "matmul_loop_order": [
+   {
+    "variant": "scalar",
+    "kernel": "mm_ijk",
+    "n": 512,
+    "stride": 1,
+    "sec": 0.1289777,
+    "checksum": -267.529241,
+    "gflops": 2.0812547905568173
+   },
+   {
+    "variant": "scalar",
+    "kernel": "mm_ikj",
+    "n": 512,
+    "stride": 1,
+    "sec": 0.05189073,
+    "checksum": -267.529241,
+    "gflops": 5.173090762068678
+   },
+   {
+    "variant": "avx512",
+    "kernel": "mm_ijk",
+    "n": 512,
+    "stride": 1,
+    "sec": 0.1277251,
+    "checksum": -267.529241,
+    "gflops": 2.1016656553801876
+   },
+   {
+    "variant": "avx512",
+    "kernel": "mm_ikj",
+    "n": 512,
+    "stride": 1,
+    "sec": 0.005763437,
+    "checksum": -267.529262,
+    "gflops": 46.575586060886934
+   },
+   {
+    "variant": "avx512_fast",
+    "kernel": "mm_ijk",
+    "n": 512,
+    "stride": 1,
+    "sec": 0.1339125,
+    "checksum": -267.529245,
+    "gflops": 2.004558618500887
+   },
+   {
+    "variant": "avx512_fast",
+    "kernel": "mm_ikj",
+    "n": 512,
+    "stride": 1,
+    "sec": 0.006824464,
+    "checksum": -267.529262,
+    "gflops": 39.33429145497727
+   }
+  ],
+  "pdist_c": [
+   {
+    "variant": "scalar",
+    "kernel": "pdist_naive",
+    "n": 1024,
+    "stride": 1,
+    "sec": 0.03273797,
+    "checksum": 45291.3417,
+    "ns_per_pair_dim": 0.48783376812934875
+   },
+   {
+    "variant": "scalar",
+    "kernel": "pdist_outer",
+    "n": 1024,
+    "stride": 1,
+    "sec": 0.0292203,
+    "checksum": 45358.3764,
+    "ns_per_pair_dim": 0.43541640043258667
+   },
+   {
+    "variant": "avx512",
+    "kernel": "pdist_naive",
+    "n": 1024,
+    "stride": 1,
+    "sec": 0.03367274,
+    "checksum": 45291.3417,
+    "ns_per_pair_dim": 0.5017629265785217
+   },
+   {
+    "variant": "avx512",
+    "kernel": "pdist_outer",
+    "n": 1024,
+    "stride": 1,
+    "sec": 0.003389189,
+    "checksum": 45358.3764,
+    "ns_per_pair_dim": 0.050502851605415344
+   },
+   {
+    "variant": "avx512_fast",
+    "kernel": "pdist_naive",
+    "n": 1024,
+    "stride": 1,
+    "sec": 0.004522253,
+    "checksum": 45291.3417,
+    "ns_per_pair_dim": 0.06738682091236115
+   },
+   {
+    "variant": "avx512_fast",
+    "kernel": "pdist_outer",
+    "n": 1024,
+    "stride": 1,
+    "sec": 0.00339165,
+    "checksum": 45358.3764,
+    "ns_per_pair_dim": 0.0505395233631134
+   }
+  ],
+  "peak_fma": [
+   {
+    "variant": "avx512",
+    "kernel": "peak_w1",
+    "n": 2000000,
+    "stride": 1,
+    "sec": 0.003720255,
+    "checksum": -51.7148647,
+    "lanes": 1,
+    "gflops": 12.902341371760807
+   },
+   {
+    "variant": "avx512",
+    "kernel": "peak_w4",
+    "n": 2000000,
+    "stride": 1,
+    "sec": 0.003711859,
+    "checksum": -51.7148647,
+    "lanes": 4,
+    "gflops": 51.72610274258801
+   },
+   {
+    "variant": "avx512",
+    "kernel": "peak_w8",
+    "n": 2000000,
+    "stride": 1,
+    "sec": 0.003723434,
+    "checksum": -51.7148647,
+    "lanes": 8,
+    "gflops": 103.1306047052264
+   },
+   {
+    "variant": "avx512",
+    "kernel": "peak_w16",
+    "n": 2000000,
+    "stride": 1,
+    "sec": 0.004134519,
+    "checksum": -51.7148647,
+    "lanes": 16,
+    "gflops": 185.75316741802374
+   }
+  ],
+  "pdist_python": [
+   {
+    "rung": "python_loops",
+    "n": 96,
+    "sec": 0.024853229000200372,
+    "ns_per_pair_dim": 42.13668653734058
+   },
+   {
+    "rung": "numpy_rowloop",
+    "n": 1024,
+    "sec": 0.07920497000031901,
+    "ns_per_pair_dim": 1.1802460253286213
+   },
+   {
+    "rung": "numpy_broadcast",
+    "n": 1024,
+    "sec": 0.11207157900025777,
+    "ns_per_pair_dim": 1.669996663931873
+   },
+   {
+    "rung": "numpy_gemm",
+    "n": 1024,
+    "sec": 0.005789101999994273,
+    "ns_per_pair_dim": 0.0862643420695405
+   }
+  ],
+  "numpy_idioms": [
+   {
+    "idiom": "softmax",
+    "size": "256 x 512",
+    "loop_sec": 0.04382165599986365,
+    "vector_sec": 0.0005413976171873003,
+    "speedup": 80.94172306765665
+   },
+   {
+    "idiom": "layernorm",
+    "size": "256 x 512",
+    "loop_sec": 0.06242406050000682,
+    "vector_sec": 0.0005596029062502339,
+    "speedup": 111.55063671540881
+   },
+   {
+    "idiom": "iou_matrix",
+    "size": "200 x 200 boxes",
+    "loop_sec": 0.05629839700009143,
+    "vector_sec": 0.0011903877343755198,
+    "speedup": 47.29416758450195
+   },
+   {
+    "idiom": "one_hot (broadcast compare)",
+    "size": "20 000 labels, 1000 classes",
+    "loop_sec": 0.024831245000314084,
+    "vector_sec": 0.046599904999766295,
+    "speedup": 0.5328604210767944
+   },
+   {
+    "idiom": "one_hot (scatter)",
+    "size": "20 000 labels, 1000 classes",
+    "loop_sec": 0.023990208500094923,
+    "vector_sec": 0.021290446499961035,
+    "speedup": 1.1268062649667225
+   },
+   {
+    "idiom": "moving_average",
+    "size": "200 000 samples, window 50",
+    "loop_sec": 0.6266352869997718,
+    "vector_sec": 0.0009478317343720732,
+    "speedup": 661.1250333530032
+   },
+   {
+    "idiom": "histogram",
+    "size": "20 000 indices, 1000 bins",
+    "loop_sec": 0.003828199968751278,
+    "vector_sec": 2.2327296875013225e-05,
+    "speedup": 171.45828221756068
+   },
+   {
+    "idiom": "leaky_relu",
+    "size": "200 000 values",
+    "loop_sec": 0.023007669499975236,
+    "vector_sec": 0.0011051378437514359,
+    "speedup": 20.818823307936643
+   }
+  ],
+  "reduction_orders": {
+   "n": 1000000,
+   "distribution": "N(1e4, 1e3^2), float32",
+   "exact": 10000805943.31836,
+   "results": {
+    "sequential": {
+     "value": 10000936960.0,
+     "ulp_error": 127.94597816467285
+    },
+    "pairwise": {
+     "value": 10000805888.0,
+     "ulp_error": 0.05402183532714844
+    },
+    "kahan": {
+     "value": 10000805888.0,
+     "ulp_error": 0.05402183532714844
+    },
+    "numpy_sum": {
+     "value": 10000805888.0,
+     "ulp_error": 0.05402183532714844
+    },
+    "lanes_4": {
+     "value": 10000719872.0,
+     "ulp_error": 84.05402183532715
+    },
+    "lanes_8": {
+     "value": 10000781312.0,
+     "ulp_error": 24.05402183532715
+    },
+    "lanes_16": {
+     "value": 10000817152.0,
+     "ulp_error": 10.945978164672852
+    }
+   }
+  },
+  "numpy_call_overhead": [
+   {
+    "n": 1,
+    "sec": 2.3300337219367417e-07,
+    "ns_per_elem": 233.00337219367418
+   },
+   {
+    "n": 10,
+    "sec": 2.460769882202396e-07,
+    "ns_per_elem": 24.60769882202396
+   },
+   {
+    "n": 100,
+    "sec": 2.482408599843028e-07,
+    "ns_per_elem": 2.482408599843028
+   },
+   {
+    "n": 1000,
+    "sec": 5.492116317735996e-07,
+    "ns_per_elem": 0.5492116317735996
+   },
+   {
+    "n": 10000,
+    "sec": 3.185991455073589e-06,
+    "ns_per_elem": 0.3185991455073589
+   },
+   {
+    "n": 100000,
+    "sec": 2.8359990722481854e-05,
+    "ns_per_elem": 0.28359990722481854
+   },
+   {
+    "n": 1000000,
+    "sec": 0.0004903952656221122,
+    "ns_per_elem": 0.49039526562211216
+   },
+   {
+    "n": 10000000,
+    "sec": 0.007792599749961937,
+    "ns_per_elem": 0.7792599749961937
+   }
+  ],
+  "np_vectorize": {
+   "n": 100000,
+   "list_comprehension_sec": 0.012829565749996164,
+   "np_vectorize_sec": 0.013116591750076623,
+   "np_where_sec": 0.0005114830546872895
+  },
+  "amx_peak": {
+   "kernel": "amx_tdpbf16ps_4acc",
+   "iters": 2000000,
+   "sec": 0.0542888,
+   "gflops": 2414.3,
+   "checksum": 39062.5
+  }
+ }
+}
