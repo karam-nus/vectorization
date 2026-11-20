@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="470" viewBox="0 0 860 470" role="img" aria-labelledby="t d">
+<title id="t">GEMM iteration box with one tile and its operand panels</title><desc id="d">Isometric box of M by N by K multiply-adds; one tile is highlighted with its A panel, B panel and C tile projected onto the three walls.</desc>
+<rect width="860" height="470" rx="10" fill="#111111"/>
+<text x="24.0" y="32.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="16" fill="#e8e8e8" text-anchor="start" font-weight="600" >GEMM as a box of multiply-adds: tiling picks a sub-box that fits in fast memory</text>
+<text x="24.0" y="52.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#6b6b6b" text-anchor="start" font-weight="400" >C[M×N] += A[M×K] · B[K×N] — every point (m, n, k) is one FMA; a tile reuses its A and B panels many times</text>
+<path d="M330.0,240.0 L506.0,328.0 L374.0,394.0 L198.0,306.0 Z" fill="#161616" fill-opacity="1.0" stroke="#5a5a5a" stroke-width="1"><title>the full M×N×K iteration box (bottom)</title></path>
+<path d="M330.0,240.0 L330.0,108.0 L198.0,174.0 L198.0,306.0 Z" fill="#161616" fill-opacity="1.0" stroke="#5a5a5a" stroke-width="1"><title></title></path>
+<path d="M330.0,240.0 L506.0,328.0 L506.0,196.0 L330.0,108.0 Z" fill="#161616" fill-opacity="1.0" stroke="#5a5a5a" stroke-width="1"><title></title></path>
+<path d="M352.0,207.0 L418.0,240.0 L374.0,262.0 L308.0,229.0 Z" fill="#3987e5" fill-opacity="0.85" stroke="#9ec5f4" stroke-width="1"><title>one tile: Mt×Nt×Kt FMAs</title></path>
+<path d="M308.0,295.0 L374.0,328.0 L374.0,262.0 L308.0,229.0 Z" fill="#3987e5" fill-opacity="0.55" stroke="#9ec5f4" stroke-width="1"><title></title></path>
+<path d="M418.0,306.0 L374.0,328.0 L374.0,262.0 L418.0,240.0 Z" fill="#3987e5" fill-opacity="0.4" stroke="#9ec5f4" stroke-width="1"><title></title></path>
+<path d="M286.0,240.0 L242.0,262.0 L242.0,196.0 L286.0,174.0 Z" fill="#d95926" fill-opacity="0.8" stroke="#f0a07a" stroke-width="1"><title>A panel (Mt×Kt) — reused for every n in the tile</title></path>
+<path d="M396.0,251.0 L462.0,284.0 L462.0,218.0 L396.0,185.0 Z" fill="#199e70" fill-opacity="0.8" stroke="#7fd8b4" stroke-width="1"><title>B panel (Kt×Nt) — reused for every m in the tile</title></path>
+<path d="M352.0,295.0 L418.0,328.0 L374.0,350.0 L308.0,317.0 Z" fill="#c98500" fill-opacity="0.8" stroke="#f3cf7a" stroke-width="1"><title>C tile (Mt×Nt) — accumulates over k, stays in registers</title></path>
+<text x="189.2" y="310.4" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#e8e8e8" text-anchor="middle" font-weight="600" >m</text>
+<text x="514.8" y="332.4" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#e8e8e8" text-anchor="middle" font-weight="600" >n</text>
+<text x="330.0" y="97.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#e8e8e8" text-anchor="middle" font-weight="600" >k</text>
+<rect x="560" y="130" width="12" height="12" rx="2" fill="#3987e5"/>
+<text x="580.0" y="140.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#e8e8e8" text-anchor="start" font-weight="600" >Tile</text>
+<text x="580.0" y="158.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#a3a3a3" text-anchor="start" font-weight="400" >Mt·Nt·Kt FMAs, done in fast memory</text>
+<rect x="560" y="178" width="12" height="12" rx="2" fill="#d95926"/>
+<text x="580.0" y="188.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#e8e8e8" text-anchor="start" font-weight="600" >A panel</text>
+<text x="580.0" y="206.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#a3a3a3" text-anchor="start" font-weight="400" >Mt·Kt values, read once per tile</text>
+<rect x="560" y="226" width="12" height="12" rx="2" fill="#199e70"/>
+<text x="580.0" y="236.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#e8e8e8" text-anchor="start" font-weight="600" >B panel</text>
+<text x="580.0" y="254.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#a3a3a3" text-anchor="start" font-weight="400" >Kt·Nt values, read once per tile</text>
+<rect x="560" y="274" width="12" height="12" rx="2" fill="#c98500"/>
+<text x="580.0" y="284.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#e8e8e8" text-anchor="start" font-weight="600" >C tile</text>
+<text x="580.0" y="302.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#a3a3a3" text-anchor="start" font-weight="400" >Mt·Nt accumulators in registers</text>
+<text x="560.0" y="338.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#e8e8e8" text-anchor="start" font-weight="600" >Reuse = FMAs / values loaded</text>
+<text x="560.0" y="358.0" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" fill="#a3a3a3" text-anchor="start" font-weight="400" >= Mt·Nt·Kt / (Mt·Kt + Kt·Nt)</text>
+<text x="560.0" y="378.0" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" fill="#a3a3a3" text-anchor="start" font-weight="400" >= 1 / (1/Nt + 1/Mt)  per k-step</text>
+<text x="560.0" y="402.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#a3a3a3" text-anchor="start" font-weight="400" >Bigger tiles → more FLOPs per byte →</text>
+<text x="560.0" y="420.0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#a3a3a3" text-anchor="start" font-weight="400" >the kernel climbs the roofline slope.</text>
+</svg>

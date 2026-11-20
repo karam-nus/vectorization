@@ -1,0 +1,111 @@
+title: "Vectorization — The Complete Guide"
+description: "From one lane to ten thousand: how computation is reshaped to run many-at-once, in NumPy, in compilers, in CUDA kernels and in silicon, and how to see it before you write it."
+baseurl: "/vectorization"
+url: "https://karam-nus.github.io"
+
+markdown: kramdown
+highlighter: rouge
+
+kramdown:
+  input: GFM
+  hard_wrap: false
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: "highlight"
+    span:
+      line_numbers: false
+    block:
+      line_numbers: true
+
+plugins:
+  - jekyll-relative-links
+
+relative_links:
+  enabled: true
+  collections: false
+
+include:
+  - README.md
+
+exclude:
+  - code/
+  - tools/
+  - Gemfile
+  - Gemfile.lock
+  - vendor/
+
+navigation:
+  - title: "Home"
+    url: "/"
+  - title: "00 — Why Vectorization?"
+    url: "/00_why_vectorization"
+  - title: "01 — The Field on One Page"
+    url: "/01_grand_overview"
+  - title: "02 — A Field Guide to Domains"
+    url: "/02_domains"
+  - title: "03 — Lanes & Registers"
+    url: "/03_lanes_and_registers"
+  - title: "04 — Seeing Vectors"
+    url: "/04_seeing_vectors"
+  - title: "05 — Cray-1 to Tensor Cores"
+    url: "/05_history"
+  - title: "06 — Dependences & Aliasing"
+    url: "/06_dependences"
+  - title: "07 — Memory Is the Real Vector"
+    url: "/07_memory_layout"
+  - title: "08 — Masks, Divergence & Tails"
+    url: "/08_control_flow"
+  - title: "09 — Is It Worth It?"
+    url: "/09_profitability"
+  - title: "10 — The Technique Catalogue"
+    url: "/10_technique_catalogue"
+  - title: "11 — Array Programming"
+    url: "/11_array_programming"
+  - title: "12 — vmap & Batching Transforms"
+    url: "/12_vmap"
+  - title: "13 — Compiler Auto-Vectorization"
+    url: "/13_auto_vectorization"
+  - title: "14 — Explicit SIMD"
+    url: "/14_explicit_simd"
+  - title: "15 — GPUs: SIMT & Warps"
+    url: "/15_gpus_simt"
+  - title: "16 — Matrix Engines"
+    url: "/16_matrix_engines"
+  - title: "17 — The Architect's View"
+    url: "/17_architects_view"
+  - title: "18 — Vectorizing ML Kernels"
+    url: "/18_ml_kernels"
+  - title: "19 — Batching at System Scale"
+    url: "/19_batching_systems"
+  - title: "20 — Hands-On: The Ladder"
+    url: "/20_handson_ladder"
+  - title: "21 — Debugging Playbook"
+    url: "/21_debugging_playbook"
+  - title: "22 — Questions Worth Pondering"
+    url: "/22_questions_worth_pondering"
+  - title: "23 — Where to Go Next"
+    url: "/23_where_next"
+  - title: "⚗ Interactive Labs"
+    url: "/labs"
+  - title: "🗺 Vector ISA Atlas"
+    url: "/atlas"
+  - title: "Appendix A — Glossary"
+    url: "/appendix_a_glossary"
+  - title: "Appendix B — Math Reference"
+    url: "/appendix_b_math"
+  - title: "Appendix C — Technique Index"
+    url: "/appendix_c_technique_index"
+  - title: "Appendix D — Hardware Matrix"
+    url: "/appendix_d_hardware_matrix"
+  - title: "Appendix E — Bibliography"
+    url: "/appendix_e_bibliography"
+  - title: "Appendix F — Question Bank"
+    url: "/appendix_f_question_bank"
+  - title: "Authoring Prompt"
+    url: "/PROMPT"
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: "default"
